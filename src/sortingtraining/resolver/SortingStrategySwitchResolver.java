@@ -1,11 +1,12 @@
 package sortingtraining.resolver;
 
 
-import sortingtraining.sortalgorythms.SortingStrategy;
 import sortingtraining.sortalgorythms.BubbleSort;
 import sortingtraining.sortalgorythms.BucketSort;
+import sortingtraining.sortalgorythms.DefaultSort;
 import sortingtraining.sortalgorythms.InsertionSort;
 import sortingtraining.sortalgorythms.QuickSort;
+import sortingtraining.sortalgorythms.SortingStrategy;
 
 public class SortingStrategySwitchResolver implements SortingStrategyResolver {
 
@@ -25,6 +26,9 @@ public class SortingStrategySwitchResolver implements SortingStrategyResolver {
                 break;
             case "BUCKET":
                 sortingStrategy = new BucketSort();
+                break;
+            case "DEFAULT":
+                sortingStrategy = new DefaultSort();
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + strategy);

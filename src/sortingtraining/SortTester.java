@@ -1,10 +1,12 @@
-import java.util.Arrays;
-import java.util.Scanner;
+package sortingtraining;
 
 import sortingtraining.resolver.SortingStrategySwitchResolver;
 import sortingtraining.utils.ArrayGeneratorUtil;
 import sortingtraining.utils.ComparingUtil;
 import sortingtraining.utils.SortingUtil;
+
+import java.util.Arrays;
+import java.util.Scanner;
 
 
 public class SortTester {
@@ -28,7 +30,7 @@ public class SortTester {
 			while (true) {
 
 				System.out.println("");
-				System.out.print("Type a sorting strategy (BUBBLE, BUCKET, INSERTION, QUICK, ALL(compare all), EXIT): ");
+				System.out.print("Type a sorting strategy (BUBBLE, BUCKET, INSERTION, QUICK, DEFAULT, ALL(compare all), EXIT): ");
 				String strategy = in.nextLine();
 
 				if (strategy.equals("EXIT")) {
@@ -42,8 +44,8 @@ public class SortTester {
 
 					SortingUtil sortingUtil = new SortingUtil(new SortingStrategySwitchResolver());
 					sortingUtil.sort(numbers, strategy);
-				}
 
+				}
 			}
 		}
 	}
