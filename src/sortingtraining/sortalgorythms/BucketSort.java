@@ -43,12 +43,10 @@ public class BucketSort implements SortingStrategy {
         //finally printing sorted array, and decreasing by abs value of lowest, to retrieve original numbers
         int i = 0;
         for (int n = 0; n < buckets.length; n++) {
-            if (buckets[n] > 0) {
                 for (int j = 0; j < buckets[n]; j++) {
                     numbsToSort[i] = n - lowest;
                     i++;
                 }
-            }
         }
 
         return numbsToSort;
