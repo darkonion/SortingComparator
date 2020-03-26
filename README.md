@@ -14,4 +14,4 @@ Type rather high size of array, lets say above 1000, preferably (30000 - 60000) 
 
 ATTENTION: Keep in mind that program does not contain user input validation algorithm, and it is case-sensitive. This feature will be implemented soon. 
 
-darkonion
+darkonion 
