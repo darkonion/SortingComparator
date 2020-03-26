@@ -2,6 +2,7 @@ package sortingtraining.utils;
 
 import sortingtraining.models.TimeMeasurement;
 import sortingtraining.sortalgorythms.BubbleSort;
+import sortingtraining.sortalgorythms.BucketSort;
 import sortingtraining.sortalgorythms.DefaultSort;
 import sortingtraining.sortalgorythms.InsertionSort;
 import sortingtraining.sortalgorythms.QuickSort;
@@ -22,7 +23,7 @@ public class ComparingUtil {
 
         times.add(new TimeMeasurement(TimerUtil.measure(new QuickSort(), numbers), "Quick Sort"));
 
-        //times.add(new TimeMeasurement(TimerUtil.measure(new BucketSort(), numbers), "Bucket Sort"));
+        times.add(new TimeMeasurement(TimerUtil.measure(new BucketSort(), numbers), "Bucket Sort"));
 
         times.add(new TimeMeasurement(TimerUtil.measure(new DefaultSort(), numbers), "Default Library Sort"));
 
@@ -59,9 +60,15 @@ public class ComparingUtil {
         System.out.println("-------------------------------------------------------------------------");
 
         /*
-          clearly Quick Delay And Default Util Library sorting types are similar in performance, however
+          Clearly Quick Delay And Default Util Library sorting types are similar in performance, however
           sometimes one is a little bit better, sometimes second one, it clearly depends on Quick Sort pivot
           which is totally random - the closest to the average, the better.
+
+          What is also interesting - with large Array size (lets say 50000), when you can expect, that 'density' is quite high
+          Bucket Sort algorithm has very good performance, situation is changing when you are using smaller array
+          lets say 1000 records. Here due to the rather large range of array (now -50000 to 50000 @ArrayGeneratorUtil)
+          we can expect lesser density, so we have a lot of empty 'buckets', and in this case, this method is not as
+          efficient as for example QuickSort, which seem to be rather resistant to array size.
 
           Author
         */
