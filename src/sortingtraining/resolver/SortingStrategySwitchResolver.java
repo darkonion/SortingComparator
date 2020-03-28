@@ -1,6 +1,7 @@
 package sortingtraining.resolver;
 
 
+import sortingtraining.Strategy;
 import sortingtraining.sortalgorythms.BubbleSort;
 import sortingtraining.sortalgorythms.BucketSort;
 import sortingtraining.sortalgorythms.DefaultSort;
@@ -10,24 +11,24 @@ import sortingtraining.sortalgorythms.SortingStrategy;
 
 public class SortingStrategySwitchResolver implements SortingStrategyResolver {
 
-    public SortingStrategy resolve(String strategy) {
+    public SortingStrategy resolve(Strategy strategy) {
 
        SortingStrategy sortingStrategy;
 
         switch (strategy) {
-            case "BUBBLE":
+            case BUBBLE:
                 sortingStrategy = new BubbleSort();
                 break;
-            case "INSERTION":
+            case INSERTION:
                 sortingStrategy = new InsertionSort();
                 break;
-            case "QUICK":
+            case QUICK:
                 sortingStrategy = new QuickSort();
                 break;
-            case "BUCKET":
+            case BUCKET:
                 sortingStrategy = new BucketSort();
                 break;
-            case "DEFAULT":
+            case DEFAULT:
                 sortingStrategy = new DefaultSort();
                 break;
             default:

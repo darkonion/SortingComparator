@@ -1,5 +1,6 @@
 package sortingtraining.utils;
 
+import sortingtraining.Strategy;
 import sortingtraining.decorators.SortingTimeDecorator;
 import sortingtraining.resolver.SortingStrategyResolver;
 import sortingtraining.sortalgorythms.SortingStrategy;
@@ -14,7 +15,7 @@ public class SortingUtil {
         this.sortingStrategyResolver = sortingStrategyResolver;
     }
 
-    public int [] sort(int[] numbers, String strategy) {
+    public int [] sort(int[] numbers, Strategy strategy) {
 
         SortingStrategy sortingStrategy = getResolve(strategy);
 
@@ -25,7 +26,7 @@ public class SortingUtil {
         return sorted;
     }
 
-    private SortingStrategy getResolve(String strategy) {
+    private SortingStrategy getResolve(Strategy strategy) {
         return new SortingTimeDecorator(
                 sortingStrategyResolver.resolve(strategy)
         );
