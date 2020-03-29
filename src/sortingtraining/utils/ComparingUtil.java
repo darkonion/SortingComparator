@@ -36,7 +36,7 @@ public class ComparingUtil {
 
     private void print(List<TimeMeasurement> times) {
 
-        System.out.println("\n-------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------");
         for (int n = 0; n < times.size(); n++) {
 
             System.out.print(times.get(n).getName());

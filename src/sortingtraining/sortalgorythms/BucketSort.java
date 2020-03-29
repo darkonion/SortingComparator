@@ -9,6 +9,11 @@ public class BucketSort implements SortingStrategy {
 
         int[] numbsToSort = Arrays.copyOf(numbers, numbers.length);
 
+        if (numbsToSort.length <= 1) {
+            System.out.println("WARN: There is nothing to sort!!! \n");
+            return numbsToSort;
+        }
+
         int largest = Integer.MIN_VALUE;
         int lowest = Integer.MAX_VALUE;
 
@@ -22,14 +27,19 @@ public class BucketSort implements SortingStrategy {
             }
         }
 
+        boolean negatives = false;
+
+        if (lowest < 0) {
+            negatives = true;
+        }
+
         // if we have negative integers, adding the lowest (abs) one to every record in array, to eliminate negatives
-        if  (lowest < 0) {
+        if  (negatives) {
             lowest = Math.abs(lowest);
             for (int j = 0; j < numbsToSort.length; j++) {
                 numbsToSort[j] += lowest;
             }
             largest += lowest;
-
         }
 
         //creating our helper array - bucket array
@@ -44,7 +54,12 @@ public class BucketSort implements SortingStrategy {
         int i = 0;
         for (int l = 0; l < buckets.length; l++) {
                 for (int m = 0; m < buckets[l]; m++) {
-                    numbsToSort[i] = l - lowest;
+                    numbsToSort[i] = l;
+
+                    if (negatives) {
+                        numbsToSort[i] -= lowest;
+                    }
+
                     i++;
                 }
         }

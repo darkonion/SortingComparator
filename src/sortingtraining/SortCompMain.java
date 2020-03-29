@@ -7,10 +7,10 @@ import sortingtraining.utils.SortingUtil;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class SortTester {
+public class SortCompMain {
 
 	public static void main(String[] args) {
-		new SortTester().run();
+		new SortCompMain().run();
 	}
 
 	void run() {
@@ -50,7 +50,7 @@ public class SortTester {
 			System.out.println(
 					"Type a sorting strategy(" + Strategy.list() + "):\n");
 			try {
-				return Strategy.valueOf(in.nextLine().toUpperCase());
+				return Strategy.valueOf(in.nextLine().toUpperCase().trim());
 			} catch (IllegalArgumentException e) {
 				System.out.println("\nWrong input, try again!\n");
 			}
@@ -63,7 +63,7 @@ public class SortTester {
 			System.out.println("\nType size of your Array with random numbers: \n");
 
 			try {
-				return ArrayGeneratorUtil.generate(Integer.parseInt(in.nextLine()));
+				return ArrayGeneratorUtil.generate(Math.abs(Integer.parseInt(in.nextLine().trim())));
 			} catch (NumberFormatException e) {
 				System.out.println("\nWrong input, try again, only numbers allowed!\n");
 			}

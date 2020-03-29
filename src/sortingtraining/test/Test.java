@@ -1,22 +1,26 @@
-package sortingtraining.sortalgorythms;
+package sortingtraining.test;
 
+import sortingtraining.sortalgorythms.BucketSort;
+import sortingtraining.sortalgorythms.InsertionSort;
+import sortingtraining.sortalgorythms.QuickSort;
+import sortingtraining.sortalgorythms.SortingStrategy;
 import sortingtraining.utils.ArrayGeneratorUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SortTest {
+public class Test {
 
     public static void main(String... args) {
-        new SortTest().run();
+        new Test().run();
     }
 
     private void run() {
         sortingTest(1);
         sortingTest(10);
         sortingTest(0);
-        sortingTest(943859);
+        sortingTest(94385);
     }
 
     private void sortingTest(final int length) {
