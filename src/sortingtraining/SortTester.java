@@ -16,7 +16,6 @@ public class SortTester {
 	void run() {
 
 		try (Scanner in = new Scanner(System.in)) {
-
 			mainMenu(in);
 		}
 	}
@@ -28,58 +27,46 @@ public class SortTester {
 			Strategy strategy = getStrategy(in);
 
 			if (strategy == Strategy.EXIT) {
-
 				System.out.println("\nSee you again!\n");
 				break;
 			}
 
 			int[] numbers = getInts(in);
 
+			System.out.println("\nYour new Array: " + Arrays.toString(numbers) + "\n");
+
 			if (strategy == Strategy.COMPARE) {
-				ComparingUtil comparingUtil = new ComparingUtil();
-				comparingUtil.compare(numbers);
-
+				new ComparingUtil().compare(numbers); //does this kind of shortcut is a 'faux pas'?
 			} else {
-
 				SortingUtil sortingUtil = new SortingUtil(strategy.resolve());
-
-				sortingUtil.sort(numbers, strategy);
-
+				sortingUtil.sort(numbers);
 			}
 		}
 	}
 
 	private Strategy getStrategy(Scanner in) {
 
-		Strategy strategy;
 		while (true) {
-
 			System.out.println(
 					"Type a sorting strategy(" + Strategy.list() + "):\n");
 			try {
-				strategy = Strategy.valueOf(in.nextLine().toUpperCase());
-				break;
+				return Strategy.valueOf(in.nextLine().toUpperCase());
 			} catch (IllegalArgumentException e) {
 				System.out.println("\nWrong input, try again!\n");
 			}
 		}
-		return strategy;
 	}
 
 	private int[] getInts(Scanner in) {
-		int[] numbers;
+
 		while (true) {
 			System.out.println("\nType size of your Array with random numbers: \n");
 
 			try {
-				numbers = ArrayGeneratorUtil.generate(Integer.parseInt(in.nextLine()));
-					break;
+				return ArrayGeneratorUtil.generate(Integer.parseInt(in.nextLine()));
 			} catch (NumberFormatException e) {
 				System.out.println("\nWrong input, try again, only numbers allowed!\n");
 			}
 		}
-
-		System.out.println("\nYour new Array: " + Arrays.toString(numbers) + "\n");
-		return numbers;
 	}
 }

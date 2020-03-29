@@ -1,6 +1,5 @@
 package sortingtraining.utils;
 
-import sortingtraining.Strategy;
 import sortingtraining.decorators.SortingTimeDecorator;
 import sortingtraining.sortalgorythms.SortingStrategy;
 
@@ -14,16 +13,16 @@ public class SortingUtil {
         this.sortingStrategy = sortingStrategy;
     }
 
-    public int [] sort(int[] numbers, Strategy strategy) {
+    public int [] sort(int[] numbers) {
 
-        SortingStrategy sortingStrategy = getResolve(strategy);
+        SortingStrategy sortingStrategy = getResolve();
         int[] sorted = sortingStrategy.sort(numbers);
         System.out.println(Arrays.toString(sorted) + "\n");
 
         return sorted;
     }
 
-    private SortingStrategy getResolve(Strategy strategy) {
+    private SortingStrategy getResolve() {
         return new SortingTimeDecorator(sortingStrategy);
     }
 }

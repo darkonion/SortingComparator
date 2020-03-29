@@ -7,9 +7,7 @@ import sortingtraining.sortalgorythms.InsertionSort;
 import sortingtraining.sortalgorythms.QuickSort;
 import sortingtraining.sortalgorythms.SortingStrategy;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public enum Strategy {
@@ -54,11 +52,9 @@ public enum Strategy {
 
     public static String list() {
 
-        List<String> str = new ArrayList<>();
-        Arrays.asList(Strategy.values()).forEach($ -> str.add($.toString()));
-        String result = str.stream().collect(Collectors.joining(", "));
-
-        return result;
+        return Arrays.stream(Strategy.values())
+                .map(Enum::toString)
+                .collect(Collectors.joining(", "));
     }
 
 }
