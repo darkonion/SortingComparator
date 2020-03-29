@@ -35,8 +35,8 @@ public class ComparingUtil {
 
 
     private void print(List<TimeMeasurement> times) {
-        System.out.println();
-        System.out.println("-------------------------------------------------------------------------");
+
+        System.out.println("\n-------------------------------------------------------------------------");
         for (int n = 0; n < times.size(); n++) {
 
             System.out.print(times.get(n).getName());
@@ -57,7 +57,7 @@ public class ComparingUtil {
 
             System.out.println();
         }
-        System.out.println("-------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------\n");
 
         /*
           Clearly Quick Delay And Default Util Library sorting types are similar in performance, however

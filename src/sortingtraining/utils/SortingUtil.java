@@ -18,10 +18,8 @@ public class SortingUtil {
     public int [] sort(int[] numbers, Strategy strategy) {
 
         SortingStrategy sortingStrategy = getResolve(strategy);
-
         int[] sorted = sortingStrategy.sort(numbers);
-
-        System.out.println(Arrays.toString(sorted));
+        System.out.println(Arrays.toString(sorted) + "\n");
 
         return sorted;
     }

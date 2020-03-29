@@ -8,10 +8,7 @@ import sortingtraining.utils.SortingUtil;
 import java.util.Arrays;
 import java.util.Scanner;
 
-
 public class SortTester {
-
-	private Strategy strategy;
 
 	public static void main(String[] args) {
 		new SortTester().run();
@@ -21,34 +18,25 @@ public class SortTester {
 
 		try (Scanner in = new Scanner(System.in)) {
 
-			int[] numbers;
-
-			numbers = getInts(in);
-
-			mainMenu(in, numbers);
+			mainMenu(in);
 		}
 	}
 
-	private void mainMenu(Scanner in, int[] numbers) {
+	private void mainMenu(Scanner in) {
 
 		while (true) {
 
-			while (true) {
-				System.out.print(
-						"Type a sorting strategy (BUBBLE, BUCKET, INSERTION, QUICK, DEFAULT, ALL(compare all), EXIT): ");
-				try {
-					strategy = Strategy.valueOf(in.nextLine().toUpperCase());
-
-					break;
-				} catch (IllegalArgumentException e) {
-					System.out.println("Wrong input, try again!");
-				}
-			}
+			Strategy strategy = getStrategy(in);
 
 			if (strategy == Strategy.EXIT) {
-				break;
 
-			} else if (strategy == Strategy.ALL) {
+				System.out.println("\nSee you again!\n");
+				break;
+			}
+
+			int[] numbers = getInts(in);
+
+			if (strategy == Strategy.COMPARE) {
 				ComparingUtil comparingUtil = new ComparingUtil();
 				comparingUtil.compare(numbers);
 
@@ -59,21 +47,37 @@ public class SortTester {
 		}
 	}
 
+	private Strategy getStrategy(Scanner in) {
+
+		Strategy strategy;
+		while (true) {
+
+			System.out.println(
+					"Type a sorting strategy(" + Strategy.list() + "):\n");
+			try {
+				strategy = Strategy.valueOf(in.nextLine().toUpperCase());
+				break;
+			} catch (IllegalArgumentException e) {
+				System.out.println("\nWrong input, try again!\n");
+			}
+		}
+		return strategy;
+	}
+
 	private int[] getInts(Scanner in) {
 		int[] numbers;
 		while (true) {
-			System.out.print("Type size of your Array with random numbers: ");
+			System.out.println("\nType size of your Array with random numbers: \n");
 
 			try {
 				numbers = ArrayGeneratorUtil.generate(Integer.parseInt(in.nextLine()));
 				break;
 			} catch (NumberFormatException e) {
-				System.out.println("Wrong input, try again, only numbers allowed!");
+				System.out.println("\nWrong input, try again, only numbers allowed!\n");
 			}
 		}
 
-		System.out.println("Your new Array: " + Arrays.toString(numbers));
-		System.out.println("");
+		System.out.println("\nYour new Array: " + Arrays.toString(numbers) + "\n");
 		return numbers;
 	}
 }
