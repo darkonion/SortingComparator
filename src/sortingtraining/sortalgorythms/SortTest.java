@@ -35,13 +35,13 @@ public class SortTest {
         final long start = System.currentTimeMillis();
         final int[] sorted = strategy.sort(arr);
         System.out.println("Finished: " + strategy.getClass() + " in: " + (System.currentTimeMillis() - start) + "ms.");
-        assert(sorted != arr);
-        assert(sorted.length == arr.length);
-        assert(Arrays.equals(sorted, referenceArr));
+        trivialAssertTrue(sorted != arr, "arrays should not be equal (the same address in memory)");
+        trivialAssertTrue(sorted.length == arr.length, "arrays should have the same length");
         System.out.println("Sorted:");
         printArray(sorted);
         System.out.println("Reference:");
         printArray(referenceArr);
+        trivialAssertTrue(Arrays.equals(sorted, referenceArr), "arrays should be equal");
     }
 
     private void printArray(int[] arr) {
@@ -50,5 +50,11 @@ public class SortTest {
             arrAsInt.add(String.valueOf(i));
         }
         System.out.println(String.join(", ", arrAsInt));
+    }
+
+    private void trivialAssertTrue(boolean condition, String message) {
+        if (!condition) {
+            throw new IllegalStateException(message);
+        }
     }
 }
