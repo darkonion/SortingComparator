@@ -1,6 +1,5 @@
 package sortingtraining;
 
-import sortingtraining.resolver.SortingStrategySwitchResolver;
 import sortingtraining.utils.ArrayGeneratorUtil;
 import sortingtraining.utils.ComparingUtil;
 import sortingtraining.utils.SortingUtil;
@@ -41,8 +40,11 @@ public class SortTester {
 				comparingUtil.compare(numbers);
 
 			} else {
-				SortingUtil sortingUtil = new SortingUtil(new SortingStrategySwitchResolver());
+
+				SortingUtil sortingUtil = new SortingUtil(strategy.resolve());
+
 				sortingUtil.sort(numbers, strategy);
+
 			}
 		}
 	}
@@ -71,7 +73,7 @@ public class SortTester {
 
 			try {
 				numbers = ArrayGeneratorUtil.generate(Integer.parseInt(in.nextLine()));
-				break;
+					break;
 			} catch (NumberFormatException e) {
 				System.out.println("\nWrong input, try again, only numbers allowed!\n");
 			}

@@ -2,17 +2,16 @@ package sortingtraining.utils;
 
 import sortingtraining.Strategy;
 import sortingtraining.decorators.SortingTimeDecorator;
-import sortingtraining.resolver.SortingStrategyResolver;
 import sortingtraining.sortalgorythms.SortingStrategy;
 
 import java.util.Arrays;
 
 public class SortingUtil {
 
-    private final SortingStrategyResolver sortingStrategyResolver;
+    private final SortingStrategy sortingStrategy;
 
-    public SortingUtil(SortingStrategyResolver sortingStrategyResolver) {
-        this.sortingStrategyResolver = sortingStrategyResolver;
+    public SortingUtil(SortingStrategy sortingStrategy) {
+        this.sortingStrategy = sortingStrategy;
     }
 
     public int [] sort(int[] numbers, Strategy strategy) {
@@ -25,8 +24,6 @@ public class SortingUtil {
     }
 
     private SortingStrategy getResolve(Strategy strategy) {
-        return new SortingTimeDecorator(
-                sortingStrategyResolver.resolve(strategy)
-        );
+        return new SortingTimeDecorator(sortingStrategy);
     }
 }

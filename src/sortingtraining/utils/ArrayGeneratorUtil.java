@@ -11,10 +11,15 @@ public class ArrayGeneratorUtil {
 
     public static int[] generate(int n) {
 
+        if (n < 1) {
+            System.out.println("Too small, changing size to 1000");
+            n = 1000;
+        }
+
         int[] numbers = new int[n];
 
-        for (int m = 0; m < numbers.length; m++) {
-            numbers[m] = gen.nextInt(100000) - 50000;
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = gen.nextInt(100000) - 50000;
         }
 
         return numbers;
