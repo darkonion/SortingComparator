@@ -26,7 +26,7 @@ public class SortCompMain {
 
 			Strategy strategy = getStrategy(in);
 
-			if (strategy == Strategy.EXIT) {
+			if (Strategy.EXIT == strategy) {
 				System.out.println("\nSee you again!\n");
 				break;
 			}
@@ -35,7 +35,7 @@ public class SortCompMain {
 
 			System.out.println("\nYour new Array: " + Arrays.toString(numbers) + "\n");
 
-			if (strategy == Strategy.COMPARE) {
+			if (Strategy.COMPARE == strategy) {
 				new ComparingUtil().compare(numbers); //does this kind of shortcut is a 'faux pas'?
 			} else {
 				SortingUtil sortingUtil = new SortingUtil(strategy.resolve());
