@@ -36,8 +36,8 @@ public class BucketSort implements SortingStrategy {
         // if we have negative integers, adding the lowest (abs) one to every record in array, to eliminate negatives
         if  (negatives) {
             lowest = Math.abs(lowest);
-            for (int j = 0; j < numbsToSort.length; j++) {
-                numbsToSort[j] += lowest;
+            for (int i = 0; i < numbsToSort.length; i++) {
+                numbsToSort[i] += lowest;
             }
             largest += lowest;
         }
@@ -46,21 +46,21 @@ public class BucketSort implements SortingStrategy {
         int[] buckets = new int[largest + 1];
 
         //populating helper array
-        for (int k : numbsToSort) {
-            buckets[k] = buckets[k] + 1;
+        for (int i : numbsToSort) {
+            buckets[i] = buckets[i] + 1;
         }
 
         //finally printing sorted array, and decreasing by abs value of lowest, to retrieve original numbers
-        int i = 0;
-        for (int l = 0; l < buckets.length; l++) {
-                for (int m = 0; m < buckets[l]; m++) {
-                    numbsToSort[i] = l;
+
+        for (int i = 0, j = 0; i < buckets.length; i++) {
+                for (int m = 0; m < buckets[i]; m++) {
+                    numbsToSort[j] = i;
 
                     if (negatives) {
-                        numbsToSort[i] -= lowest;
+                        numbsToSort[j] -= lowest;
                     }
 
-                    i++;
+                    j++;
                 }
         }
 
