@@ -9,6 +9,11 @@ public class InsertionSort implements SortingStrategy {
 
 		int[] numbsToSort = Arrays.copyOf(numbers, numbers.length);
 
+		if (numbsToSort.length <= 1) {
+			System.out.println("There is nothing to sort!!! \n");
+			return numbsToSort;
+		}
+
 		for (int i=1; i <= numbsToSort.length - 1; i++) {
 		
 			int key = numbsToSort[i];

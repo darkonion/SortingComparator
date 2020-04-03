@@ -9,43 +9,58 @@ public class BucketSort implements SortingStrategy {
 
         int[] numbsToSort = Arrays.copyOf(numbers, numbers.length);
 
+        if (numbsToSort.length <= 1) {
+            System.out.println("WARN: There is nothing to sort!!! \n");
+            return numbsToSort;
+        }
+
         int largest = Integer.MIN_VALUE;
         int lowest = Integer.MAX_VALUE;
 
         //looking for min and max value
-        for (int n : numbsToSort) {
-            if (n >largest) {
-                largest = n;
+        for (int i : numbsToSort) {
+            if (i >largest) {
+                largest = i;
             }
-            if (n < lowest) {
-                lowest = n;
+            if (i < lowest) {
+                lowest = i;
             }
         }
 
+        boolean negatives = false;
+
+        if (lowest < 0) {
+            negatives = true;
+        }
+
         // if we have negative integers, adding the lowest (abs) one to every record in array, to eliminate negatives
-        if  (lowest < 0) {
+        if  (negatives) {
             lowest = Math.abs(lowest);
-            for (int n = 0; n < numbsToSort.length; n++) {
-                numbsToSort[n] += lowest;
+            for (int i = 0; i < numbsToSort.length; i++) {
+                numbsToSort[i] += lowest;
             }
             largest += lowest;
-
         }
 
         //creating our helper array - bucket array
         int[] buckets = new int[largest + 1];
 
         //populating helper array
-        for (int n : numbsToSort) {
-            buckets[n] = buckets[n] + 1;
+        for (int i : numbsToSort) {
+            buckets[i] = buckets[i] + 1;
         }
 
         //finally printing sorted array, and decreasing by abs value of lowest, to retrieve original numbers
-        int i = 0;
-        for (int n = 0; n < buckets.length; n++) {
-                for (int j = 0; j < buckets[n]; j++) {
-                    numbsToSort[i] = n - lowest;
-                    i++;
+
+        for (int i = 0, j = 0; i < buckets.length; i++) {
+                for (int m = 0; m < buckets[i]; m++) {
+                    numbsToSort[j] = i;
+
+                    if (negatives) {
+                        numbsToSort[j] -= lowest;
+                    }
+
+                    j++;
                 }
         }
 

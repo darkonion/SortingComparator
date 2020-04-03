@@ -9,15 +9,20 @@ public class BubbleSort implements SortingStrategy {
 	public int[] sort(int[] numbers) {
 
 		int[] numbsToSort = Arrays.copyOf(numbers, numbers.length);
-		
+
+		if (numbsToSort.length <= 1) {
+			System.out.println("There is nothing to sort!!! \n");
+			return numbsToSort;
+		}
+
 		int size = numbsToSort.length - 1;
 		
-		for (int m = 0; m <= size - 1; m++) {
-			for (int n = 0; n <= size -1; n++) {
-				if (numbsToSort[n] > numbsToSort[n+1]) {
-					int temp = numbsToSort[n];
-					numbsToSort[n] = numbsToSort[n+1];
-					numbsToSort[n+1] = temp;
+		for (int i = 0; i <= size - 1; i++) {
+			for (int j = 0; j <= size -1; j++) {
+				if (numbsToSort[j] > numbsToSort[j+1]) {
+					int temp = numbsToSort[j];
+					numbsToSort[j] = numbsToSort[j+1];
+					numbsToSort[j+1] = temp;
 				}
 			}
 		}

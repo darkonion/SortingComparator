@@ -1,33 +1,28 @@
 package sortingtraining.utils;
 
 import sortingtraining.decorators.SortingTimeDecorator;
-import sortingtraining.resolver.SortingStrategyResolver;
 import sortingtraining.sortalgorythms.SortingStrategy;
 
 import java.util.Arrays;
 
 public class SortingUtil {
 
-    private final SortingStrategyResolver sortingStrategyResolver;
+    private final SortingStrategy sortingStrategy;
 
-    public SortingUtil(SortingStrategyResolver sortingStrategyResolver) {
-        this.sortingStrategyResolver = sortingStrategyResolver;
+    public SortingUtil(SortingStrategy sortingStrategy) {
+        this.sortingStrategy = sortingStrategy;
     }
 
-    public int [] sort(int[] numbers, String strategy) {
+    public int [] sort(int[] numbers) {
 
-        SortingStrategy sortingStrategy = getResolve(strategy);
-
+        SortingStrategy sortingStrategy = getResolve();
         int[] sorted = sortingStrategy.sort(numbers);
-
-        System.out.println(Arrays.toString(sorted));
+        System.out.println(Arrays.toString(sorted) + "\n");
 
         return sorted;
     }
 
-    private SortingStrategy getResolve(String strategy) {
-        return new SortingTimeDecorator(
-                sortingStrategyResolver.resolve(strategy)
-        );
+    private SortingStrategy getResolve() {
+        return new SortingTimeDecorator(sortingStrategy);
     }
 }

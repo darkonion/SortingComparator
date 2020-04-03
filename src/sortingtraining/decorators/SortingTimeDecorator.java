@@ -18,7 +18,7 @@ public class SortingTimeDecorator extends SortingDecorator {
         long end = Instant.now().toEpochMilli();
 
         System.out.println("Sorting type: " + decorated.getClass().getSimpleName());
-        System.out.println("Sorting time: " + (double)(end - start)/1000 + " s");
+        System.out.println("Sorting time: " + (double)(end - start)/1000 + " s \n");
 
         return sorted;
     }
