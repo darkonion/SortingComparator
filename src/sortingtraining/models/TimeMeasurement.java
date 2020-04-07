@@ -1,6 +1,6 @@
 package sortingtraining.models;
 
-public class TimeMeasurement implements Comparable<Object> {
+public class TimeMeasurement {
 
     private final double measurement;
     private final String name;
@@ -26,10 +26,4 @@ public class TimeMeasurement implements Comparable<Object> {
                 '}';
     }
 
-    @Override
-    public int compareTo(Object o) {
-        TimeMeasurement other = (TimeMeasurement) o;
-        //return (int)(1000*measurement - 1000*other.measurement);  //asc
-        return (int)(1000*other.measurement - 1000*measurement); //dsc
-    }
 }
