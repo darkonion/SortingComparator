@@ -9,6 +9,7 @@ import sortingtraining.sortalgorythms.QuickSort;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ComparingUtil {
@@ -27,7 +28,8 @@ public class ComparingUtil {
 
         times.add(new TimeMeasurement(TimerUtil.measure(new DefaultSort(), numbers), "Default Library Sort"));
 
-        Collections.sort(times); //dsc
+        Collections.sort(times,
+                Comparator.comparingDouble(TimeMeasurement::getMeasurement).reversed()); //dsc
 
         print(times);
 
