@@ -15,14 +15,14 @@ public class BubbleSort implements SortingStrategy {
 			return numbsToSort;
 		}
 
-		int size = numbsToSort.length - 1;
+		int numbsSize = numbsToSort.length - 1;
 		
-		for (int i = 0; i <= size - 1; i++) {
-			for (int j = 0; j <= size -1; j++) {
-				if (numbsToSort[j] > numbsToSort[j+1]) {
-					int temp = numbsToSort[j];
-					numbsToSort[j] = numbsToSort[j+1];
-					numbsToSort[j+1] = temp;
+		for (int size = numbsSize; size > 0; size--) {
+			for (int i = 0; i < size; i++) {
+				if (numbsToSort[i] > numbsToSort[i+1]) {
+					int temp = numbsToSort[i];
+					numbsToSort[i] = numbsToSort[i+1];
+					numbsToSort[i+1] = temp;
 				}
 			}
 		}
