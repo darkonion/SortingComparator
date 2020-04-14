@@ -45,7 +45,12 @@ public enum Strategy {
             return new ShellSort();
         }
     },
-    DEFAULT {
+    JDK_SORT {
+        SortingStrategy resolve() {
+            return new DefaultSort();
+        }
+    },
+    JDK_PARALLEL {
         SortingStrategy resolve() {
             return new DefaultSort();
         }

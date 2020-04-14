@@ -3,6 +3,7 @@ package sortingtraining.utils;
 import sortingtraining.models.TimeMeasurement;
 import sortingtraining.sortalgorythms.BubbleSort;
 import sortingtraining.sortalgorythms.BucketSort;
+import sortingtraining.sortalgorythms.DefaultParallelSort;
 import sortingtraining.sortalgorythms.DefaultSort;
 import sortingtraining.sortalgorythms.InsertionSort;
 import sortingtraining.sortalgorythms.MergeSort;
@@ -27,7 +28,9 @@ public class ComparingUtil {
                 new TimeMeasurement(TimerUtil.measure(new MergeSort(), numbers), "Merge Sort"),
                 new TimeMeasurement(TimerUtil.measure(new QuickSort(), numbers), "Quick Sort"),
                 new TimeMeasurement(TimerUtil.measure(new BucketSort(), numbers), "Bucket Sort"),
-                new TimeMeasurement(TimerUtil.measure(new DefaultSort(), numbers), "Default Library Sort")
+                new TimeMeasurement(TimerUtil.measure(new DefaultSort(), numbers), "JDK Sort"),
+                new TimeMeasurement(TimerUtil.measure(new DefaultParallelSort(), numbers), "JDK Parallel Sort")
+
         );
 
         Collections.sort(times,
