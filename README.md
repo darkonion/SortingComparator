@@ -1,4 +1,4 @@
-#CommandLine Sorting Comparator
+# CommandLine Sorting Comparator
 
 Simple java project showing and comparing performance of different sorting algorithms:
 
