@@ -3,11 +3,15 @@ package sortingtraining.utils;
 import sortingtraining.models.TimeMeasurement;
 import sortingtraining.sortalgorythms.BubbleSort;
 import sortingtraining.sortalgorythms.BucketSort;
+import sortingtraining.sortalgorythms.DefaultParallelSort;
 import sortingtraining.sortalgorythms.DefaultSort;
 import sortingtraining.sortalgorythms.InsertionSort;
+import sortingtraining.sortalgorythms.MergeSort;
 import sortingtraining.sortalgorythms.QuickSort;
+import sortingtraining.sortalgorythms.SelectionSort;
+import sortingtraining.sortalgorythms.ShellSort;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -16,17 +20,18 @@ public class ComparingUtil {
 
     public void compare(int[] numbers) {
 
-        List<TimeMeasurement> times = new ArrayList<>();
+        List<TimeMeasurement> times = Arrays.asList(
+                new TimeMeasurement(TimerUtil.measure(new InsertionSort(), numbers), "Insertion Sort"),
+                new TimeMeasurement(TimerUtil.measure(new ShellSort(), numbers), "Shell Sort"),
+                new TimeMeasurement(TimerUtil.measure(new BubbleSort(), numbers), "Bubble Sort"),
+                new TimeMeasurement(TimerUtil.measure(new SelectionSort(), numbers), "Selection Sort"),
+                new TimeMeasurement(TimerUtil.measure(new MergeSort(), numbers), "Merge Sort"),
+                new TimeMeasurement(TimerUtil.measure(new QuickSort(), numbers), "Quick Sort"),
+                new TimeMeasurement(TimerUtil.measure(new BucketSort(), numbers), "Bucket Sort"),
+                new TimeMeasurement(TimerUtil.measure(new DefaultSort(), numbers), "JDK Sort"),
+                new TimeMeasurement(TimerUtil.measure(new DefaultParallelSort(), numbers), "JDK Parallel Sort")
 
-        times.add(new TimeMeasurement(TimerUtil.measure(new InsertionSort(), numbers), "Insertion Sort"));
-
-        times.add(new TimeMeasurement(TimerUtil.measure(new BubbleSort(), numbers), "Bubble Sort"));
-
-        times.add(new TimeMeasurement(TimerUtil.measure(new QuickSort(), numbers), "Quick Sort"));
-
-        times.add(new TimeMeasurement(TimerUtil.measure(new BucketSort(), numbers), "Bucket Sort"));
-
-        times.add(new TimeMeasurement(TimerUtil.measure(new DefaultSort(), numbers), "Default Library Sort"));
+        );
 
         Collections.sort(times,
                 Comparator.comparingDouble(TimeMeasurement::getMeasurement).reversed()); //dsc

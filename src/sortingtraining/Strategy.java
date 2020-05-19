@@ -4,7 +4,10 @@ import sortingtraining.sortalgorythms.BubbleSort;
 import sortingtraining.sortalgorythms.BucketSort;
 import sortingtraining.sortalgorythms.DefaultSort;
 import sortingtraining.sortalgorythms.InsertionSort;
+import sortingtraining.sortalgorythms.MergeSort;
 import sortingtraining.sortalgorythms.QuickSort;
+import sortingtraining.sortalgorythms.SelectionSort;
+import sortingtraining.sortalgorythms.ShellSort;
 import sortingtraining.sortalgorythms.SortingStrategy;
 
 import java.util.Arrays;
@@ -22,6 +25,11 @@ public enum Strategy {
             return new BubbleSort();
         }
     },
+    SELECTION {
+        SortingStrategy resolve() {
+            return new SelectionSort();
+        }
+    },
     BUCKET {
         SortingStrategy resolve() {
             return new BucketSort();
@@ -32,9 +40,24 @@ public enum Strategy {
             return new InsertionSort();
         }
     },
-    DEFAULT {
+    SHELL {
+        SortingStrategy resolve() {
+            return new ShellSort();
+        }
+    },
+    JDK_SORT {
         SortingStrategy resolve() {
             return new DefaultSort();
+        }
+    },
+    JDK_PARALLEL {
+        SortingStrategy resolve() {
+            return new DefaultSort();
+        }
+    },
+    MERGE {
+        SortingStrategy resolve() {
+            return new MergeSort();
         }
     },
     QUICK {
