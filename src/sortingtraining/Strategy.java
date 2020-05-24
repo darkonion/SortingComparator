@@ -2,6 +2,7 @@ package sortingtraining;
 
 import sortingtraining.sortalgorythms.BubbleSort;
 import sortingtraining.sortalgorythms.BucketSort;
+import sortingtraining.sortalgorythms.DefaultParallelSort;
 import sortingtraining.sortalgorythms.DefaultSort;
 import sortingtraining.sortalgorythms.InsertionSort;
 import sortingtraining.sortalgorythms.MergeSort;
@@ -15,63 +16,70 @@ import java.util.stream.Collectors;
 
 public enum Strategy {
 
-    COMPARE{
-        SortingStrategy resolve() {
+
+    COMPARE("Comparing"){
+        public SortingStrategy resolve() {
             return null;
         }
     },
-    BUBBLE {
-        SortingStrategy resolve() {
+    BUBBLE("Bubble Sort") {
+        public SortingStrategy resolve() {
             return new BubbleSort();
         }
     },
-    SELECTION {
-        SortingStrategy resolve() {
+    SELECTION("Selection Sort") {
+        public SortingStrategy resolve() {
             return new SelectionSort();
         }
     },
-    BUCKET {
-        SortingStrategy resolve() {
+    BUCKET("Bucket Sort") {
+        public SortingStrategy resolve() {
             return new BucketSort();
         }
     },
-    INSERTION {
-        SortingStrategy resolve() {
+    INSERTION("Insertion Sort") {
+        public SortingStrategy resolve() {
             return new InsertionSort();
         }
     },
-    SHELL {
-        SortingStrategy resolve() {
+    SHELL("Shell Sort") {
+        public SortingStrategy resolve() {
             return new ShellSort();
         }
     },
-    JDK_SORT {
-        SortingStrategy resolve() {
+    JDK_SORT("JDK Sort") {
+        public SortingStrategy resolve() {
             return new DefaultSort();
         }
     },
-    JDK_PARALLEL {
-        SortingStrategy resolve() {
-            return new DefaultSort();
+    JDK_PARALLEL("JDK Parallel Sort") {
+        public SortingStrategy resolve() {
+            return new DefaultParallelSort();
         }
     },
-    MERGE {
-        SortingStrategy resolve() {
+    MERGE("Merge Sort") {
+        public SortingStrategy resolve() {
             return new MergeSort();
         }
     },
-    QUICK {
-        SortingStrategy resolve() {
+    QUICK("Quick Sort") {
+        public SortingStrategy resolve() {
             return new QuickSort();
         }
     },
-    EXIT {
-        SortingStrategy resolve() {
+    EXIT("EXIT") {
+        public SortingStrategy resolve() {
             return null;
         }
     };
 
-    abstract SortingStrategy resolve();
+    private String sortName;
+
+    Strategy(String sortName) {
+        this.sortName = sortName;
+    }
+
+    public abstract SortingStrategy resolve();
 
     public static String list() {
 
@@ -80,4 +88,7 @@ public enum Strategy {
                 .collect(Collectors.joining(", "));
     }
 
+    public String getSortName() {
+        return sortName;
+    }
 }
